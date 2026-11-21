@@ -4,21 +4,21 @@
 <h2>Funzionalità principali</h2>
 
 
-<h4>Anagrafica Veicoli</h4>
+<br>Anagrafica Veicoli</br>
 
 
-Modello <b>vehicle.vehicle</b> con:
+Modello <br>vehicle.vehicle</br> con:
 
 Targa, marca, modello, anno
 Proprietario (link a res.partner)
 Km attuali, data prossima revisione
-Smart h4utton collegati a interventi fatti e fatture.
+Smart button collegati a interventi fatti e fatture.
 
 
-<h4>Gestione Interventi / Ordini di Lavoro</h4>
+<br>Gestione Interventi / Ordini di Lavoro</br>
 
 
-Modello <b>vehicle.workorder</b> con:
+Modello <br>vehicle.workorder</br> con:
 
 Tipo di intervento (tagliando, freni, cambio olio, ecc.)
 Stato: bozza → confermato → in corso → completato → fatturato
@@ -27,33 +27,33 @@ Ore lavorate (timesheet semplificato)
 Collegamento automatico con stock per scalare i ricambi usati.
 
 
-<h4>Piani di Manutenzione Preventiva</h4>
+<br>Piani di Manutenzione Preventiva</br>
 
 Possibilità di schedulare interventi periodici (es. ogni 20.000 km o ogni 12 mesi).
 Notifica automatica via email/SMS al cliente.
 
 
-<h4>Integrazione con Magazzino</h4>
+<br>Integrazione con Magazzino</br>
 
 Ricambi gestiti come prodotti con quantità a magazzino.
 Movimenti automatici quando un intervento viene completato.
 Avvisi quando un ricambio va sotto la scorta minima.
 
 
-<h4>Fatturazione Automatica</h4>
+<br>Fatturazione Automatica</br>
 
 Generazione fattura dal workorder → righe di manodopera + ricambi.
 
-<h4>Collegamento a contabilità Odoo standard.</h4>
+<br>Collegamento a contabilità Odoo standard.</br>
 
-<h4>Dashboard e Report</h4>
+<br>Dashboard e Report</br>
 
 Ore di lavoro per meccanico.
 Margine sugli interventi (ricambi + manodopera).
 Scadenze prossime revisioni e tagliandi.
 KPI su clienti più attivi.
 
-<h4>Ruoli di Sicurezza</h4>
+<br>Ruoli di Sicurezza</br>
 
 Capo officina → tutto
 Meccanico → vede solo i suoi ordini di lavoro, può inserire ore e ricambi

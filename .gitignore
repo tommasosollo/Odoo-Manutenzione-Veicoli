@@ -1,4 +1,4 @@
 .pyc
 __pycache__/
-docker-compose.xml
+docker-compose.yml
 config/

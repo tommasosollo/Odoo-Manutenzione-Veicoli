@@ -21,7 +21,7 @@ services:
       - DB_PASSWORD=odoo
       - ADMIN_PASSWD=password   # master password for DB creation
     volumes:
-      - ./addons:/mnt/extra-addons
+      - ./vehicle_maintenance_workshop:/mnt/extra-addons/vehicle_maintenance_workshop
       - ./config:/etc/odoo
 
 volumes:

@@ -4,57 +4,57 @@
 <h2>Funzionalità principali</h2>
 
 
-<br>Anagrafica Veicoli</br>
+<h3>Anagrafica Veicoli</h3>
 
 
-Modello <br>vehicle.vehicle</br> con:
+Modello <b>vehicle.vehicle</b> con: <br>
 
-Targa, marca, modello, anno
-Proprietario (link a res.partner)
-Km attuali, data prossima revisione
-Smart button collegati a interventi fatti e fatture.
-
-
-<br>Gestione Interventi / Ordini di Lavoro</br>
+Targa, marca, modello, anno <br>
+Proprietario (link a res.partner) <br>
+Km attuali, data prossima revisione <br>
+Smart button collegati a interventi fatti e fatture. <br>
 
 
-Modello <br>vehicle.workorder</br> con:
-
-Tipo di intervento (tagliando, freni, cambio olio, ecc.)
-Stato: bozza → confermato → in corso → completato → fatturato
-Ricambi usati (collegamento a prodotti di magazzino)
-Ore lavorate (timesheet semplificato)
-Collegamento automatico con stock per scalare i ricambi usati.
+<h3>Gestione Interventi / Ordini di Lavoro</h3>
 
 
-<br>Piani di Manutenzione Preventiva</br>
+Modello <b>vehicle.workorder</b> con: <br>
 
-Possibilità di schedulare interventi periodici (es. ogni 20.000 km o ogni 12 mesi).
-Notifica automatica via email/SMS al cliente.
-
-
-<br>Integrazione con Magazzino</br>
-
-Ricambi gestiti come prodotti con quantità a magazzino.
-Movimenti automatici quando un intervento viene completato.
-Avvisi quando un ricambio va sotto la scorta minima.
+Tipo di intervento (tagliando, freni, cambio olio, ecc.) (<b>vehicle.workorder.type</b>) <br>
+Stato: bozza → confermato → in corso → completato → fatturato <br>
+Ricambi usati (collegamento a prodotti di magazzino) <br>
+Ore lavorate (timesheet semplificato) <br>
+Collegamento automatico con stock per scalare i ricambi usati. <br>
 
 
-<br>Fatturazione Automatica</br>
+<h3>Piani di Manutenzione Preventiva</h3>
 
-Generazione fattura dal workorder → righe di manodopera + ricambi.
+Possibilità di schedulare interventi periodici (es. ogni 20.000 km o ogni 12 mesi). <br>
+Notifica automatica via email/SMS al cliente. <br>
 
-<br>Collegamento a contabilità Odoo standard.</br>
 
-<br>Dashboard e Report</br>
+<h3>Integrazione con Magazzino</h3>
 
-Ore di lavoro per meccanico.
-Margine sugli interventi (ricambi + manodopera).
-Scadenze prossime revisioni e tagliandi.
-KPI su clienti più attivi.
+Ricambi gestiti come prodotti con quantità a magazzino. <br>
+Movimenti automatici quando un intervento viene completato. <br>
+Avvisi quando un ricambio va sotto la scorta minima. <br>
 
-<br>Ruoli di Sicurezza</br>
 
-Capo officina → tutto
-Meccanico → vede solo i suoi ordini di lavoro, può inserire ore e ricambi
-Amministrazione → fatturazione e contabilità
+<h3>Fatturazione Automatica</h3>
+
+Generazione fattura dal workorder → righe di manodopera + ricambi. <br>
+
+<h3>Collegamento a contabilità Odoo standard.</h3>
+
+<h3>Dashboard e Report</h3>
+
+Ore di lavoro per meccanico. <br>
+Margine sugli interventi (ricambi + manodopera). <br>
+Scadenze prossime revisioni e tagliandi. <br>
+KPI su clienti più attivi. <br>
+
+<h3>Ruoli di Sicurezza</h3>
+
+Capo officina → tutto <br>
+Meccanico → vede solo i suoi ordini di lavoro, può inserire ore e ricambi <br>
+Amministrazione → fatturazione e contabilità <br>

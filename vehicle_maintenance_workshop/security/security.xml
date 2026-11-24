@@ -3,27 +3,41 @@
 
     <data noupdate="0">
 
+
         <record id="module_category_workshop" model="ir.module.category">
             <field name="name">Workshop Manutenzione Veicoli</field>
             <field name="sequence">1</field>
         </record>
 
+        <record id="privilege_workshop" model="res.groups.privilege">
+            <field name="name">Ruoli Officina</field>
+            <field name="category_id" ref="vehicle_maintenance_workshop.module_category_workshop"/>
+        </record>
+
+        <record id="privilege_workshop" model="res.groups.privilege">
+            <field name="name">Accesso Officina</field>
+            <field name="category_id" ref="module_category_workshop"/>
+        </record>
+
         <record id="group_workshop_mechanic" model="res.groups">
             <field name="name">Meccanico</field>
-            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"></field>
-            <field name="comment">L'utente avrà accesso ai veicoli, ai suoi interventi e ai prodotti</field>
+            <field name="privilege_id" ref="vehicle_maintenance_workshop.privilege_workshop"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="comment">Accesso ai veicoli, agli interventi e ai prodotti</field>
         </record>
 
         <record id="group_workshop_chief" model="res.groups">
             <field name="name">Capo Officina</field>
-            <field name="implied_ids" eval="[(4, ref('vehicle_maintenance_workshop.group_workshop_mechanic'))]"></field>
-            <field name="comment">L'utente avrà accesso a tutto</field>
+            <field name="privilege_id" ref="vehicle_maintenance_workshop.privilege_workshop"/>
+            <field name="implied_ids" eval="[(4, ref('vehicle_maintenance_workshop.group_workshop_mechanic'))]"/>
+            <field name="comment">Accesso completo all'officina</field>
         </record>
 
         <record id="group_workshop_administration" model="res.groups">
             <field name="name">Amministrazione</field>
-            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"></field>
-            <field name="comment">L'utente avrà accesso a fatturazione e contabilità</field>
+            <field name="privilege_id" ref="vehicle_maintenance_workshop.privilege_workshop"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="comment">Accesso alla fatturazione e alla contabilità</field>
         </record>
 
         <record id="mechanic_own_workorders_rule" model="ir.rule">

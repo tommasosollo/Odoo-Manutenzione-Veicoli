@@ -6,7 +6,7 @@ class Vehicle(models.Model):
     _name = "vehicle.vehicle"
     _description = "Vehicle Model"
 
-    targa = fields.Char(string="Targa", required=True, )
+    targa = fields.Char(string="Targa", required=True)
 
     marca = fields.Char(string="Marca", required=True)
 
@@ -46,23 +46,25 @@ class Vehicle(models.Model):
     
     # Contatori per smart buttons
     num_interventi = fields.Integer(
-        string="Interventi",
+        string=" Interventi",
         compute="_compute_intervention_count"
     )
     num_fatture = fields.Integer(
-        string="Fatture",
+        string=" Fatture",
         compute="_compute_invoice_count"
     )
 
     @api.depends()
     def _compute_intervention_count(self):
         for rec in self:
-            rec.intervention_count = self.env["vehicle.workorder"].search_count([("vehicle_id", "=", rec.id)])
+            if(not rec.targa): rec.num_interventi = 0
+            else: rec.num_interventi = self.env["vehicle.workorder"].search_count([("vehicle_id", "=", rec.targa)])
 
     @api.depends()
     def _compute_invoice_count(self):
         for rec in self:
-            rec.invoice_count = self.env["account.move"].search_count([("vehicle_id", "=", rec.id), ("move_type", "=", "out_invoice")])
+            if(not rec.targa): rec.num_fatture = 0
+            else: rec.num_fatture = self.env["account.move"].search_count([("vehicle_id", "=", rec.targa), ("move_type", "=", "out_invoice")])
 
     _sql_constraints = [
         ('unique_targa', 'unique(targa)', 'La targa deve essere univoca!')

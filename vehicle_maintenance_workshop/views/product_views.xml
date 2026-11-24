@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+
     <record id="custom_product_form_view" model="ir.ui.view">
         <field name="name">Custom Product Form</field>
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product.product_normal_form_view"/>
         <field name="arch" type="xml">
-            <xpath expr="//form" position="replace">
-                <form string="Product">
-                    <sheet>
-                        <group>
-                            <field class="text-break" name="name" options="{'line_breaks': False}" widget="text" placeholder="es. Hamburger al formaggio" on_change="1" field_id="name_0" />
-                        </group>
-                        <notebook>
-                            <page string="Informazioni Generali">
-                                <group>
-                                    <field name="standard_price" class="oe_inline" widget="monetary" options="{'currency_field': 'cost_currency_id', 'field_digits': True}" field_id="standard_price_0"/>
-                                    
-                                    <field name="cost_currency_id" invisible="1" on_change="1" field_id="cost_currency_id_0"/>
 
-                                    <field name="barcode" field_id="barcode_0"/>
-                                    <field name="quantita_rimasta" />
+            <!-- Aggiunta delle informazioni personalizzate -->
+            <xpath expr="//sheet/notebook" position="inside">
 
-                                    <field name="quantita_totale" groups="vehicle_maintenance_workshop.group_workshop_chief" />
-                                </group>
-                            </page>
-                        </notebook>
-                    </sheet>
-                </form>
+                <page string="Informazioni Officina">
+                    <group>
+                        <field name="standard_price"
+                            widget="monetary"
+                            options="{'currency_field': 'cost_currency_id'}"/>
+
+                        <field name="cost_currency_id" invisible="1"/>
+
+                        <field name="barcode"/>
+                        <field name="quantita_rimasta"/>
+
+                        <field name="quantita_totale"
+                            groups="vehicle_maintenance_workshop.group_workshop_chief"/>
+                    </group>
+                </page>
+
             </xpath>
+
         </field>
     </record>
+
 
     <record id="custom_product_product_list_view" model="ir.ui.view">
         <field name="name">Custom Product Variant list</field>

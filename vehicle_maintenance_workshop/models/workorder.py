@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError, UserError
 
 
@@ -43,7 +43,7 @@ class Workorder(models.Model):
 
     ore_lavorate = fields.Integer(string="Ore Lavorate")
 
-    fattura_id = fields.Many2one('account.move', string="Fattura Generata")
+    fattura_id = fields.Many2one('account.move')
 
     cliente_id = fields.Many2one(
         "res.partner",
@@ -107,6 +107,7 @@ class Workorder(models.Model):
             invoice_vals = {
                 'move_type': 'out_invoice',
                 'partner_id': rec.cliente_id.id if rec.cliente_id else False,
+                'workorder_id': rec.id,
                 'invoice_origin': rec.reference,
                 'invoice_line_ids': [],
             }
@@ -138,6 +139,22 @@ class Workorder(models.Model):
             invoice = self.env['account.move'].create(invoice_vals)
 
             rec.fattura_id = invoice.id
+
+
+    def action_invoice(self):
+        self.ensure_one()
+
+        if not self.fattura_id:
+            return False
+
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Fattura',
+            'res_model': 'account.move',
+            'view_mode': 'form',
+            'res_id': self.fattura_id.id,
+            'target': 'current',
+        }
 
 
 class WorkorderRicambio(models.Model):

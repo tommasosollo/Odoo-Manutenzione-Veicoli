@@ -22,24 +22,32 @@
         <field name="model">vehicle.workorder</field>
         <field name="arch" type="xml">
             <form string="Interventi">
+
                 <header>
-                    <header>
-                        <button name="action_conferma" type="object" string="Conferma"
-                            invisible="stato != 'bozza'" class="oe_highlight"/>
-                        <button name="action_in_corso" type="object" string="In Corso"
-                            invisible="stato != 'confermato'" class="oe_highlight"/>
-                        <button name="action_completato" type="object" string="Completato"
-                            invisible="stato != 'in_corso'" class="oe_highlight"/>
-                        <button name="action_fatturato" type="object" string="Fattura"
-                            invisible="stato != 'completato'" class="oe_highlight"/>
-                        <button name="action_cancella" type="object" string="Cancella"
-                            invisible="stato in ('completato','fatturato', 'cancellato')" class="oe_highlight"/>
-                    </header>
-
-
-                    <field name="stato" widget="statusbar" statusbar_visible="bozza,confermato,in_corso,completato,fatturato" />
+                    <button name="action_conferma" type="object" string="Conferma"
+                       invisible="stato != 'bozza'" class="oe_highlight"/>
+                    <button name="action_in_corso" type="object" string="In Corso"
+                        invisible="stato != 'confermato'" class="oe_highlight"/>
+                    <button name="action_completato" type="object" string="Completato"
+                        invisible="stato != 'in_corso'" class="oe_highlight"/>
+                    <button name="action_fatturato" type="object" string="Fattura"
+                       invisible="stato != 'completato'" class="oe_highlight"/>
+                    <button name="action_cancella" type="object" string="Cancella"
+                        invisible="stato in ('completato','fatturato', 'cancellato')" class="oe_highlight"/>
                 </header>
+
+
+                <field name="stato" widget="statusbar" statusbar_visible="bozza,confermato,in_corso,completato,fatturato" />
+                
                 <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button name="action_invoice"
+                            type="object"
+                            string="Mostra Fattura"
+                            class="oe_stat_button"
+                            icon="fa-file-text-o"/>
+                    </div>
+
                     <group>
                         <group>
                             <field name="reference" readonly="1"/>

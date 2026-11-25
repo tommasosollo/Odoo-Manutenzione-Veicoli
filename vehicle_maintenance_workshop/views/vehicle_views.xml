@@ -27,7 +27,7 @@
                     <button name="%(action_intervention)d" type="action" class="oe_stat_button" icon="fa-wrench">
                         <field name="num_interventi" widget="statinfo"/>
                     </button>
-                    <button name="%(action_invoice)d" type="action" class="oe_stat_button" icon="fa-file-invoice">
+                    <button name="action_invoice" type="object" class="oe_stat_button" icon="fa-file-invoice">
                         <field name="num_fatture" widget="statinfo"/>
                     </button>
                 </header>

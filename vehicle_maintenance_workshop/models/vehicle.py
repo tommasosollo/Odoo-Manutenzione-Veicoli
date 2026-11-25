@@ -58,17 +58,44 @@ class Vehicle(models.Model):
     def _compute_intervention_count(self):
         for rec in self:
             if(not rec.targa): rec.num_interventi = 0
-            else: rec.num_interventi = self.env["vehicle.workorder"].search_count([("vehicle_id", "=", rec.targa)])
+            else: rec.num_interventi = self.env["vehicle.workorder"].search_count([("vehicle_id", "=", rec.id)])
 
     @api.depends()
     def _compute_invoice_count(self):
         for rec in self:
-            if(not rec.targa): rec.num_fatture = 0
-            else: rec.num_fatture = self.env["account.move"].search_count([("vehicle_id", "=", rec.targa), ("move_type", "=", "out_invoice")])
+            workorders = self.env["vehicle.workorder"].search([
+                ("vehicle_id", "=", rec.id)
+            ])
+
+            rec.num_fatture = self.env["account.move"].search_count([
+                ("workorder_id", "in", workorders.ids),
+                ("move_type", "=", "out_invoice")
+            ])
 
     _sql_constraints = [
         ('unique_targa', 'unique(targa)', 'La targa deve essere univoca!')
     ]
+
+    def action_invoice(self):
+        self.ensure_one()
+
+        workorders = self.env["vehicle.workorder"].search([
+            ("vehicle_id", "=", self.id)
+        ])
+
+        invoices = self.env["account.move"].search([
+            ("workorder_id", "in", workorders.ids),
+            ("move_type", "=", "out_invoice")
+        ])
+
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Fatture',
+            'res_model': 'account.move',
+            'view_mode': 'list,form',
+            'domain': [('id', 'in', invoices.ids)],
+            'target': 'current',
+        }
     
 
     # Metodi generali

@@ -169,7 +169,7 @@ class WorkorderRicambio(models.Model):
         string="Costo Unitario",
         related="product_id.standard_price",
         store=True,
-        readonly=False  # così lo puoi modificare se serve
+        readonly=False 
     )
 
     subtotal = fields.Float(

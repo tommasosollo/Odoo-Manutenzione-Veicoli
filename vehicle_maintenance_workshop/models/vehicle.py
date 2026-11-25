@@ -20,7 +20,7 @@ class Vehicle(models.Model):
     
     proprietario_id = fields.Many2one(
         "res.partner", 
-        string="Propritario Veicolo",
+        string="Proprietario Veicolo",
         help="Collegamento al proprietario da res.partner",
         required=True
         )
